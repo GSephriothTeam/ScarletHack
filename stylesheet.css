@@ -3,10 +3,11 @@ body {
 }
 
 
-td {
+.spot {
+	display: inline-block;
 	background-color: white;
 	color: black;
-	border:  7px solid #333;
+	//border:  7px solid #333;
 	border-collapse: collapse;
 	height:  120px;
 	width:  120px;
@@ -23,6 +24,11 @@ table {
     margin-left:auto;
     margin-right:auto;
 	top: 30px;
+}
+
+td {
+	border:  7px solid #333;
+	border-collapse: collapse;
 }
 
 
@@ -43,8 +49,9 @@ table {
 
 }
 
-button{
-	  outline: none;
+.startButton{
+	border-collapse: collapse;
+	outline: none;
  width :400px;
  table-layout: relative;
  //background-color: #555555;
@@ -57,8 +64,27 @@ button{
  display: block;
  font-size: 1em;
  margin-left: auto;
-    margin-right: auto;
+margin-right: auto;
 }
+
+
+
+#winner {
+	text-align: center;
+	text-decoration: none;
+	font-size: 2em;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+#move {
+	text-align: center;
+	text-decoration: none;
+	font-size: 1.7em;
+	margin-left: auto;
+  margin-right: auto;
+}
+
 #AIStart {
 	background-color: black;
 }

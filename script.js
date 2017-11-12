@@ -1,8 +1,3 @@
-function myFunction() {
-    var x = document.getElementById("table").rows[0].cells;
-    x[0].innerHTML = "NEW CONTENT";
-}
-
 var board = [
     [null, null, null],
     [null, null, null],
@@ -11,12 +6,12 @@ var board = [
 
 var myMove = true
 
-function startGame() {
-
+function Humanstarts() {
+    console.log('Human starts game');
 }
 
-AIstarts(){
-    
+function AIstarts(){
+    console.log('AI starts game')
 }
 
 function getWinner(board) {
@@ -97,3 +92,9 @@ function min(board) {
     return a;
   }
 }
+
+$(document).ready(function() {
+    $("button").click(function(){
+        console.log('ccc');
+    });
+});

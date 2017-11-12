@@ -17,6 +17,7 @@ function restartGame() {
         [null, null, null]
     ];
     myMove = false;
+    document.getElementById("move").style.visibility = "visible";
     updateMove();
 }
 
@@ -27,6 +28,7 @@ function restartGame2() {
         [null, null, null]
     ];
     myMove = true;
+    document.getElementById("move").style.visibility = "visible";
     makeMove();
 }
 

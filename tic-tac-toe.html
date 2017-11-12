@@ -5,11 +5,8 @@
   <meta charset="UTF-8">
     <title>Unbeatable Tic-Tac-Toe</title>
   <link rel="stylesheet" href="stylesheet.css">
-
+  <script src="script.js"></script>
 </head>
-
-<body><br>
-
     <button class="startButton" id="humanStart" onClick="startGame()"> Restart (Automatic Human start)</button><br>
     <button class="startButton" id="AIStart" onClick ="AIstarts()"> Computer plays first </button>
 
@@ -19,19 +16,19 @@
 
 	<table id= "table">
 		<tr>
-      <td><div style="width: 100%; height: 100%;"><button class="spot" id="c00"></button></div></td>
-        <td><div style="width: 100%; height: 100%; border-collapse: collapse;"><button class="spot" id="c01"></button></div></td>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c02"></button></div></td>
+      <td><button class="spot" id="c00"></button></td>
+        <td><button class="spot" id="c01"></button></td>
+        <td><button class="spot" id="c02"></button></td>
     </tr>
     <tr>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c10"></button></div></td>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c11"></button></div></td>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c12"></button></div></td>
+        <td><button class="spot" id="c10"></button></td>
+        <td><button class="spot" id="c11"></button></td>
+        <td><button class="spot" id="c12"></button></td>
     </tr>
     <tr>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c20"></button></div></td>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c21"></button></div></td>
-        <td><div style="width: 100%; height: 100%;border-collapse: collapse;"><button class="spot" id="c22"></button></div></td>
+        <td><button class="spot" id="c20"></button></td>
+        <td><button class="spot" id="c21"></button></td>
+        <td><button class="spot" id="c22"></button></td>
 		</tr>
 	</table>
 	<div class="endMessage">

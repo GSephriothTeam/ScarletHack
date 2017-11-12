@@ -1,7 +1,3 @@
-function myFunction() {
-    console.log('clicked');
-}
-
 var board = [
     [null, null, null],
     [null, null, null],
@@ -98,5 +94,7 @@ function min(board) {
 }
 
 $(document).ready(function() {
-    
+    $("button").click(function(){
+        console.log('ccc');
+    });
 });

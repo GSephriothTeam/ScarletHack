@@ -15,6 +15,10 @@ function startGame() {
 
 }
 
+AIstarts(){
+    
+}
+
 function getWinner(board) {
 
     // Check if someone won

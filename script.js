@@ -51,6 +51,9 @@ function updateMove() {
     var winner = getWinner(board);
 
     $("#winner").text(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "");
+      if(winner == 1 || winner == 0 || winner == -1) {
+        document.getElementById("move").style.visibility = "hidden";
+      }
 
     $("#move").text(myMove ? "AI's Move" : "Your move");
 }
@@ -126,6 +129,7 @@ function recurseMinimax(board, player) {
     numNodes++;
     var winner = getWinner(board);
     if (winner != null) {
+
         switch(winner) {
             case 1:
                 // AI wins
@@ -137,6 +141,7 @@ function recurseMinimax(board, player) {
                 // Tie
                 return [0, board];
         }
+
     } else {
         // Next states
         var nextVal = null;

@@ -5,7 +5,7 @@ var board = [
 ]
 
 var myMove = false;
-
+var winner = 2;
 if (myMove) {
     makeMove();
 }
@@ -32,15 +32,19 @@ function restartGame2() {
 
 $(document).ready(function() {
     $("button.spot").click(function() {
-        var cell = $(this).attr("id")
-        var row = parseInt(cell[1])
-        var col = parseInt(cell[2])
-        if (!myMove) {
+        if (winner == 1 || winner == 0 || winner == -1){return false;}
+        else {
+            var cell = $(this).attr("id")
+            var row = parseInt(cell[1])
+            var col = parseInt(cell[2])
+            if (!myMove) {
             board[row][col] = false;
             myMove = true;
             updateMove();
             makeMove();
+            }
         }
+        
     });
     $("#restart").click(restartGame);
 });
@@ -48,11 +52,10 @@ $(document).ready(function() {
 function updateMove() {
     updateButtons();
 
-    var winner = getWinner(board);
+    winner = getWinner(board);
 
     $("#winner").text(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "");
       if(winner == 1 || winner == 0 || winner == -1) {
-        document.getElementById("button.spot").onclick = function() {return false;};
         document.getElementById("move").style.visibility = "hidden";
       }
 
@@ -128,7 +131,7 @@ var numNodes = 0;
 
 function recurseMinimax(board, player) {
     numNodes++;
-    var winner = getWinner(board);
+    winner = getWinner(board);
     if (winner != null) {
 
         switch(winner) {

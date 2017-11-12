@@ -7,28 +7,28 @@
   <link rel="stylesheet" href="stylesheet.css">
   <script src="script.js"></script>
 </head>
+    <button class="startButton" id="humanStart" onClick="startGame()"> Restart (Automatic Human start)</button><br>
+    <button class="startButton" id="AIStart" onClick ="AIstarts()"> Computer plays first </button>
 
-<body>
-		<br>
-    <button id="humanStart" onClick="startGame()"> Restart (Automatic Human start)</button>
-    <br>
-    <button id="AIStart" onClick ="AIstarts()"> Computer plays first </button>
+<br>
+    <div id="winner"></div>
+    <div id="move">Your Move</div>
 
 	<table id= "table">
 		<tr>
-			<td class="cell" id="0" onclick="myFunction()"></td>
-			<td class="cell" id="1"></td>
-			<td class="cell" id="2"></td>
-		</tr>
-		<tr>
-			<td class="cell" id="3"></td>
-			<td class="cell" id="4"></td>
-			<td class="cell" id="5"></td>
-		</tr>
-		<tr>
-			<td class="cell" id="6"></td>
-			<td class="cell" id="7"></td>
-			<td class="cell" id="8"></td>
+      <td><button class="spot" id="c00"></button></td>
+        <td><button class="spot" id="c01"></button></td>
+        <td><button class="spot" id="c02"></button></td>
+    </tr>
+    <tr>
+        <td><button class="spot" id="c10"></button></td>
+        <td><button class="spot" id="c11"></button></td>
+        <td><button class="spot" id="c12"></button></td>
+    </tr>
+    <tr>
+        <td><button class="spot" id="c20"></button></td>
+        <td><button class="spot" id="c21"></button></td>
+        <td><button class="spot" id="c22"></button></td>
 		</tr>
 	</table>
 	<div class="endMessage">

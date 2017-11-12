@@ -20,6 +20,16 @@ function restartGame() {
     updateMove();
 }
 
+function restartGame2() {
+    board = [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
+    ];
+    myMove = true;
+    makeMove();
+}
+
 $(document).ready(function() {
     $("button").click(function() {
         var cell = $(this).attr("id")
@@ -37,22 +47,22 @@ $(document).ready(function() {
 
 function updateMove() {
     updateButtons();
-    
+
     var winner = getWinner(board);
-    
+
     $("#winner").text(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "");
-    
+
     $("#move").text(myMove ? "AI's Move" : "Your move");
 }
 
 function getWinner(board) {
-   
+
     // Check if someone won
     vals = [true, false];
     var allNotNull = true;
     for (var k = 0; k < vals.length; k++) {
         var value = vals[k];
-        
+
         // Check rows, columns, and diagonals
         var diagonalComplete1 = true;
         var diagonalComplete2 = true;
@@ -89,7 +99,7 @@ function getWinner(board) {
     }
     return null;
 }
-    
+
 function updateButtons() {
     for (var i = 0; i < 3; i++) {
         for (var j = 0; j < 3; j++) {
@@ -131,7 +141,7 @@ function recurseMinimax(board, player) {
         // Next states
         var nextVal = null;
         var nextBoard = null;
-        
+
         for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 3; j++) {
                 if (board[i][j] == null) {

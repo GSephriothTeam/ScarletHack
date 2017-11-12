@@ -31,7 +31,7 @@ function restartGame2() {
 }
 
 $(document).ready(function() {
-    $("button").click(function() {
+    $("button.spot").click(function() {
         var cell = $(this).attr("id")
         var row = parseInt(cell[1])
         var col = parseInt(cell[2])
@@ -52,6 +52,7 @@ function updateMove() {
 
     $("#winner").text(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "");
       if(winner == 1 || winner == 0 || winner == -1) {
+        document.getElementById("button.spot").onclick = function() {return false;};
         document.getElementById("move").style.visibility = "hidden";
       }
 

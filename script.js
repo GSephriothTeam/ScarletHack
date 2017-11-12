@@ -4,24 +4,55 @@ var board = [
     [null, null, null]
 ]
 
-var myMove = true
+var myMove = false;
 
-function Humanstarts() {
-    console.log('Human starts game');
+if (myMove) {
+    makeMove();
 }
 
-function AIstarts(){
-    console.log('AI starts game')
+function restartGame() {
+    board = [
+        [null, null, null],
+        [null, null, null],
+        [null, null, null]
+    ];
+    myMove = false;
+    updateMove();
+}
+
+$(document).ready(function() {
+    $("button").click(function() {
+        var cell = $(this).attr("id")
+        var row = parseInt(cell[1])
+        var col = parseInt(cell[2])
+        if (!myMove) {
+            board[row][col] = false;
+            myMove = true;
+            updateMove();
+            makeMove();
+        }
+    });
+    $("#restart").click(restartGame);
+});
+
+function updateMove() {
+    updateButtons();
+    
+    var winner = getWinner(board);
+    
+    $("#winner").text(winner == 1 ? "AI Won!" : winner == 0 ? "You Won!" : winner == -1 ? "Tie!" : "");
+    
+    $("#move").text(myMove ? "AI's Move" : "Your move");
 }
 
 function getWinner(board) {
-
+   
     // Check if someone won
     vals = [true, false];
     var allNotNull = true;
     for (var k = 0; k < vals.length; k++) {
         var value = vals[k];
-
+        
         // Check rows, columns, and diagonals
         var diagonalComplete1 = true;
         var diagonalComplete2 = true;
@@ -58,43 +89,67 @@ function getWinner(board) {
     }
     return null;
 }
-
-function max(board) {
-  if(is_Terminal(board)) {
-    return getWinner(board);
-  } else {
-    var a = NUMBER.NEGATIVE_INFINITY
+    
+function updateButtons() {
     for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                if (board[i][j] == null) {
-                   board[i][j] = player;
-                  a = Math.max(a, min(board));
-                }
-            }
+        for (var j = 0; j < 3; j++) {
+            $("#c" + i + "" + j).text(board[i][j] == false ? "x" : board[i][j] == true ? "o" : "");
+        }
     }
-    return a;
-  }
 }
 
-function min(board) {
-  if(is_Terminal(board)) {
-    return getWinner(board);
-  } else {
-    var b = NUMBER.POSITIVE_INFINITY
-    for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                if (board[i][j] == null) {
-                   board[i][j] = player;
-                  b = Math.min(b, max(board));
-                }
-            }
-    }
-    return a;
-  }
+function makeMove() {
+    board = minimaxMove(board);
+    console.log(numNodes);
+    myMove = false;
+    updateMove();
 }
 
-$(document).ready(function() {
-    $("button").click(function(){
-        console.log('ccc');
-    });
-});
+function minimaxMove(board) {
+    numNodes = 0;
+    return recurseMinimax(board, true)[1];
+}
+
+var numNodes = 0;
+
+function recurseMinimax(board, player) {
+    numNodes++;
+    var winner = getWinner(board);
+    if (winner != null) {
+        switch(winner) {
+            case 1:
+                // AI wins
+                return [1, board]
+            case 0:
+                // opponent wins
+                return [-1, board]
+            case -1:
+                // Tie
+                return [0, board];
+        }
+    } else {
+        // Next states
+        var nextVal = null;
+        var nextBoard = null;
+        
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                if (board[i][j] == null) {
+                    board[i][j] = player;
+                    var value = recurseMinimax(board, !player)[0];
+                    if ((player && (nextVal == null || value > nextVal)) || (!player && (nextVal == null || value < nextVal))) {
+                        nextBoard = board.map(function(arr) {
+                            return arr.slice();
+                        });
+                        nextVal = value;
+                    }
+                    board[i][j] = null;
+                }
+            }
+        }
+        return [nextVal, nextBoard];
+    }
+}
+
+
+updateMove();
